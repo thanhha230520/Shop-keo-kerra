@@ -1,22 +1,55 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerra - Cửa Hàng Kẹo Ngọt</title>
+    <title>Kerra - Shop Kẹo Rau Củ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff7f0;
+            background-color: #fffdf7;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
+
         header {
-            background-color: #ff6f61;
-            padding: 20px;
+            background-color: #27ae60;
             color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
         }
+
+        .menu-icon {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        nav {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background-color: #2ecc71;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #27ae60;
+        }
+
         .product {
             display: inline-block;
             border: 1px solid #ccc;
@@ -25,11 +58,14 @@
             margin: 10px;
             width: 200px;
             background-color: #ffffff;
+            text-align: center;
         }
+
         img {
             width: 100%;
             border-radius: 5px;
         }
+
         .btn {
             background-color: #e67e22;
             color: white;
@@ -39,43 +75,69 @@
             cursor: pointer;
             margin-top: 5px;
         }
+
         #cart {
             margin-top: 30px;
             border-top: 2px solid #ccc;
             padding-top: 20px;
+            text-align: center;
         }
+
         .btn-pay {
             background-color: #27ae60;
             margin-top: 10px;
         }
+
+        #feedback {
+            margin: 30px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>🍬 Kerra - Cửa Hàng Kẹo Ngọt 🍭</h1>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <h1>🍬 Kerra - Kẹo Rau Củ Tự Nhiên 🍀</h1>
+        <nav id="menu">
+            <a href="#products">Sản phẩm</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#contact">Liên hệ</a>
+            <a href="#info">Nơi sản xuất</a>
+        </nav>
     </header>
 
-    <!-- Danh sách sản phẩm -->
-    <div class="product">
-        <h3>Kẹo Dẻo Kerra</h3>
-        <img src="keo-deo.jpg" alt="Kẹo Dẻo Kerra">
-        <p>Giá: 10.000 VNĐ</p>
-        <button class="btn" onclick="addToCart('Kẹo Dẻo Kerra', 10000)">Mua</button>
-    </div>
+    <!-- Sản phẩm -->
+    <section id="products">
+        <div class="product">
+            <h3>Kẹo Rau Củ Vị Dâu</h3>
+            <img src="keo-dau.jpg" alt="Kẹo Rau Củ Vị Dâu">
+            <p>Giá: 20.000 VNĐ</p>
+            <button class="btn" onclick="addToCart('Kẹo Rau Củ Vị Dâu', 20000)">Mua</button>
+        </div>
 
-    <div class="product">
-        <h3>Kẹo Sôcôla Kerra</h3>
-        <img src="keo-socola.jpg" alt="Kẹo Sôcôla Kerra">
-        <p>Giá: 15.000 VNĐ</p>
-        <button class="btn" onclick="addToCart('Kẹo Sôcôla Kerra', 15000)">Mua</button>
-    </div>
+        <div class="product">
+            <h3>Kẹo Rau Củ Vị Cam</h3>
+            <img src="keo-cam.jpg" alt="Kẹo Rau Củ Vị Cam">
+            <p>Giá: 18.000 VNĐ</p>
+            <button class="btn" onclick="addToCart('Kẹo Rau Củ Vị Cam', 18000)">Mua</button>
+        </div>
 
-    <div class="product">
-        <h3>Kẹo Chua Cay Kerra</h3>
-        <img src="keo-chua-cay.jpg" alt="Kẹo Chua Cay Kerra">
-        <p>Giá: 12.000 VNĐ</p>
-        <button class="btn" onclick="addToCart('Kẹo Chua Cay Kerra', 12000)">Mua</button>
-    </div>
+        <div class="product">
+            <h3>Kẹo Rau Củ Mix</h3>
+            <img src="keo-mix.jpg" alt="Kẹo Rau Củ Mix">
+            <p>Giá: 25.000 VNĐ</p>
+            <button class="btn" onclick="addToCart('Kẹo Rau Củ Mix', 25000)">Mua</button>
+        </div>
+    </section>
 
     <!-- Giỏ hàng -->
     <div id="cart">
@@ -85,7 +147,29 @@
         <button class="btn btn-pay" onclick="checkout()">Thanh Toán</button>
     </div>
 
+    <!-- Feedback -->
+    <div id="feedback">
+        <h2>💬 Feedback từ khách hàng</h2>
+        <p>"Kẹo ngon, ngọt dịu và tốt cho sức khỏe!" - Khách hàng A</p>
+        <p>"Tôi rất thích vị tự nhiên của kẹo Kerra." - Khách hàng B</p>
+    </div>
+
+    <!-- Thông tin liên hệ -->
+    <footer id="contact">
+        <p>Liên hệ đặt hàng: <strong>0987 654 321</strong></p>
+        <p id="info">Nơi sản xuất: <strong>Đà Lạt, Việt Nam</strong></p>
+    </footer>
+
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
         let cart = [];
         let total = 0;
 
@@ -118,4 +202,5 @@
         }
     </script>
 </body>
+
 </html>
